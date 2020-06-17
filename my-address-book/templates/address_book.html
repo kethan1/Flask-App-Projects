@@ -1,0 +1,31 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+
+Address Book
+
+{% endblock %}
+
+{% block content %}
+
+<h1 class="jumbotron text-center"><b>Address Book</b></h1>
+
+<div style="text-align:center;">
+    <form style="display: inline-block;" method="POST">
+        <input name="FullName" type="text" placeholder="Full Name" required>
+        <input name="Number" type="tel" placeholder="Phone Number" required>
+        <button class="btn btn-sm btn-warning" type="submit">Upload</button>
+    </form>
+</div>
+
+{% for contact in contacts %}
+    <form class="display:inline!important;" action="/delete/{{ contact['_id'] }}" style="display:inline;">
+        <span style="margin-left: 15%; font-size: 2.1vw;"><b>{{ contact['FullName'] }}</b></span>
+        <button class="btn btn-sm btn-danger">x</button>
+    </form>
+    <p style="font-size: 1.1vw;margin-left: 15%;">{{ contact['Number'] }}</p>
+{% else %}
+    <p style="font-size: 1.1vw;margin-left: 15%;">Add Your First Contact</p>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+
+One Stop Shop
+
+{% endblock %}
+
+{% block styles%}
+
+{{super()}}
+
+<link rel="stylesheet" href="./static/styles.css">
+
+{% endblock %}
+
+{% block content %}
+
+<h1 class="jumbotron redheader"><span style="font-size:4.25vw" class="margin-class text-font">Welcome to 1-Stop-Shop</span></h1>
+
+<a href="/add" class="btn btn-lg margin-class a-as-button text-font">Add a Product</a>
+<a href="/buy" class="btn btn-lg a-as-button text-font">Buy a Product</a>
+
+{% endblock %}

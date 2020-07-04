@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\ketha\OneDrive\Documents\Kethan\Youngwonks\Flask App Projects\one-stop-shop\venv"
+VIRTUAL_ENV="C:\Users\ketha\Documents\Kethan\Youngwonks\Flask App Projects\one-stop-shop\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -7,7 +7,7 @@ import random
 app = Flask(__name__)
 
 
-app.config['MONGO_URI'] = "mongodb://localhost:27017/note-manager-db"
+app.config['MONGO_URI'] = "mongodb://localhost:27017/jumbled-words"
 
 
 Bootstrap(app)
@@ -28,9 +28,12 @@ def jumble():
         mongo.db.words.insert_one(doc)
         return redirect('/')
 
+index = 0
+score = 0
 
 @app.route('/figureout', methods=['GET', 'POST'])
 def figure_out():
+    global index, score
     docs = [dct['word'] for dct in list(mongo.db.words.find({}, {'_id': False}))]
     jumbled = []
     for word in docs:
@@ -40,14 +43,20 @@ def figure_out():
         jumbled.append(word)
     length = len(docs)
     if request.method == 'GET':
-        return render_template('figure_out.html', jumbled=jumbled, docs=docs, length=length)
+        if length == index:
+            return render_template('figure_out.html', jumbled=[jumbled[index]], docs=docs, length=length, isfinished='Finish', index=index)
+        return render_template('figure_out.html', jumbled=jumbled[index], docs=docs, length=length, isfinished='Submit', index=index)
     elif request.method == 'POST':
-        score = 0
+        index += 1
+        correct = False
         for correct_word, jumbled_word in request.form.items():
-            if correct_word == jumbled_word.upper():
-                score+=1
-        print(score)
-        return render_template('results.html', score=str(score), total=str(length))
+            if correct_word.upper() == jumbled_word.upper():
+                score += 1
+                correct = True
+        if index == length:
+            index = 0
+            return render_template('results.html', score=str(score), total=str(length))
+        return render_template('after_each_word.html', correct=correct)
 
 
 if __name__ == '__main__':

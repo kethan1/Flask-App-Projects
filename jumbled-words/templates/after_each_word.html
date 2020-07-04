@@ -1,0 +1,28 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+
+Answer
+
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .leftmargin {
+        margin-left:10%
+    }
+</style>
+
+<h1 class="jumbotron"><b style="font-size:3.5vw;" class="leftmargin">Answer</b><br></h1>
+
+{% if correct %}
+    <p class="leftmargin" style="font-size: 1.5vw">You got the word correct!! :)</p>
+{% else %}
+    <p class="leftmargin" style="font-size: 1.5vw">You got the word wrong :(</p>
+{% endif %}
+<form method="GET">
+    <button class="leftmargin btn btn-info" type="submit">Next Word</button>
+</form>
+
+{% endblock %}

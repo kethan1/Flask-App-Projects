@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
-app.config['MONGO_URI'] = "mongodb://localhost:27017/note-manager-db"
+app.config['MONGO_URI'] = "mongodb://localhost:27017/address-book"
 
 
 Bootstrap(app)

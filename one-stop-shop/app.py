@@ -80,5 +80,4 @@ def clear_cart():
 
 
 if __name__ == '__main__':
-    print('http://192.168.0.19:5000')
-    app.run(host='0.0.0.0', debug=True)
+    app.run(debug=True)

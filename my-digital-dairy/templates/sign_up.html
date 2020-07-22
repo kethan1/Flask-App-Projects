@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login System</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="{{ url_for('static', filename='show_password.js') }}"></script>
+    <link rel="stylesheet" href="./static/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="./static/images/dairy.png"/>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <script type="text/javascript">
+                    M.toast({html: '<span>{{ message }}</span><button class="btn-flat toast-action" style="color: white;" onclick="M.Toast.dismissAll();">X</button>', classes: 'rounded'})
+                </script>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="row">
+        <div class="col m12 l12 show-on-medium-and-up hide-on-small-only">
+            <div class="header">
+                <span class="text-font">
+                    <span style="font-size:4vw; line-height: 0.5vw;" class="margin">User Registration</span>
+                    <br>
+                    <span class="margin" style="font-size: 1.75vw;">Already have an account? <a href="/login" style="text-decoration:none;">Click Here</a></span>
+                </span>
+            </div>
+            <div style="margin-top: 3vw; height: 7vw; text-align: center;">
+                <form method="POST" class="text-font" style="display: inline-block; width: 40vw; text-align: center;">
+                    <div class="stylingform" style="border: 2px solid gray; border-radius: 0.5vw; text-align: center;">
+                        <div class="input-field">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="first_name" class="text-font" type="text" name="firstname">
+                            <label for="first_name">First Name</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="last_name" class="text-font" type="text" name="lastname">
+                            <label for="last_name">Last Name</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">email</i>
+                            <input id="email" class="text-font validate" type="email" name="email">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="input-field">
+                            <a onclick="ShowPassword()"><i style="color: black;" class="postfix mdi mdi-arrow-right material-icons unselectable">remove_red_eye</i></a>
+                            <i class="material-icons prefix">lock</i>
+                            <input id="pwd" class="text-font" type="password" name="password">
+                            <label for="pwd">Password</label>
+                        </div>
+                        <div class="input-field">
+                            <a onclick="ShowPassword2()"><i style="color: black;" class="postfix mdi mdi-arrow-right material-icons unselectable">remove_red_eye</i></a>
+                            <i class="material-icons prefix">lock</i>
+                            <input id="pwd2" class="text-font" type="password" name="password2">
+                            <label for="pwd2">Confirm Password</label>
+                        </div>
+                        <button style="z-index: 1; background: white; color: midnightblue" class="text-font waves-effect waves-light btn">Register</button>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                </form>
+            </div>
+            <div class="footer">
+                <span style="position: absolute; bottom: 0; right: 0; width: 100%; text-align:right; margin-right: 1vw; margin-bottom: 0.5vw" class="text-font">
+                    My Digital Diary
+                </span>
+            </div>
+        </div>
+        <div class="col s12 show-on-small hide-on-med-and-up">
+            <div class="header">
+                <span class="text-font">
+                    <span style="font-size:5.5vw; line-height: 0.5vw;" class="margin">User Registration</span>
+                    <br>
+                    <span class="margin" style="font-size: 3.5vw;">Already have an account? <a href="/login" style="text-decoration:none;">Click Here</a></span>
+                </span>
+            </div>
+            <div style="margin-top: 3vw; height: 7vw; text-align: center;">
+                <form method="POST" class="text-font" style="display: inline-block; width: 90%; margin-left: auto; margin-right: auto;">
+                    <div class="stylingform" style="border: 2px solid gray; border-radius: 0.5vw; text-align: center;">
+                        <div class="input-field">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="first_name2" class="text-font" type="text" name="firstname">
+                            <label for="first_name2">First Name</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="last_name2" class="text-font" type="text" name="lastname">
+                            <label for="last_name2">Last Name</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">email</i>
+                            <input id="email2" class="text-font validate" type="email" name="email">
+                            <label for="email2">Email</label>
+                        </div>
+                        <div class="input-field">
+                            <a onclick="ShowPassword3()"><i style="color: black;" class="postfix mdi mdi-arrow-right material-icons unselectable">remove_red_eye</i></a>
+                            <i class="material-icons prefix">lock</i>
+                            <input id="pwd3" class="text-font" type="password" name="password">
+                            <label for="pwd3">Password</label>
+                        </div>
+                        <div class="input-field">
+                            <a onclick="ShowPassword4()"><i style="color: black;" class="postfix mdi mdi-arrow-right material-icons unselectable">remove_red_eye</i></a>
+                            <i class="material-icons prefix">lock</i>
+                            <input id="pwd4" class="text-font" type="password" name="password2">
+                            <label for="pwd4">Confirm Password</label>
+                        </div>
+                        <button style="z-index: 1; background: white; color: midnightblue" class="text-font waves-effect waves-light btn">Register</button>
+                    </div>
+                    <br>
+                    <br>
+                </form>
+            </div>
+            <div class="footer">
+                <span style="position: absolute; bottom: 0; right: 0; width: 100%; text-align:right; margin-right: 1vw; margin-bottom: 0.5vw" class="text-font">
+                    My Digital Diary
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

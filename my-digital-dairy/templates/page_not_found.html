@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page Not Found</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="./static/images/dairy.png"/>
+    <style>
+        .header {
+            padding-top: 2vw;
+            padding-bottom: 2vw;
+            color: white;
+            background-image: linear-gradient(to right, #2c4f53, #7fa58c, #ccce8f);
+        }
+
+        .footer {
+            color: white;
+            position:fixed;
+            left:0px;
+            bottom:0px;
+            height:10px;
+            width:100%;
+            z-index: 100;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-image: linear-gradient(to right, #2c4f53, #7fa58c, #ccce8f);
+        }
+
+        .margin {
+            margin-left: 10%;
+        }
+
+        .text-font{
+            font-family: 'Courier New';
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <script type="text/javascript">
+                    M.toast({html: '<span>{{ message }}</span><button class="btn-flat toast-action" style="color: white;" onclick="M.Toast.dismissAll();">X</button>', classes: 'rounded'})
+                </script>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="row">
+        <div class="col m12 l12 show-on-medium-and-up hide-on-small-only">
+            <div class="header">
+                <span class="text-font">
+                    <span style="font-size:4vw; line-height: 0.5vw;" class="margin">Page Not Found</span>
+                    <br>
+                    <span class="margin" style="font-size: 1.75vw;"><a href="/diary" style="text-decoration:none;">Home</a></span>
+                </span>
+            </div>
+            <p style="text-align: center;">
+                This page does not exist. If you have been redirected to this page from this website, please send an
+                email to kethan@vegunta.com, to resolve the issue. If there was a link to this page from another website,
+                please contact the other website.
+            </p>
+            <div class="footer">
+                <span style="position: absolute; bottom: 0; right: 0; width: 100%; text-align:right; margin-right: 1vw; margin-bottom: 0.5vw" class="text-font">
+                    My Digital Diary
+                </span>
+            </div>
+        </div>
+        <div class="show-on-small hide-on-med-and-up">
+            <div class="header">
+                <span class="text-font">
+                    <span style="font-size:6vw; line-height: 0.5vw;" class="margin">Page Not Found</span>
+                    <br>
+                    <span class="margin" style="font-size: 3.5vw;"><a href="/diary" style="text-decoration:none;">Diary</a></span>
+                </span>
+            </div>
+            <p style="text-align: center;">
+                This page does not exist. If you have been redirected to this page from this website, please send an
+                email to kethan@vegunta.com, to resolve the issue. If there was a link to this page from another website,
+                please contact the other website.
+            </p>
+            <p style="text-align: center">Error: {{ e }}</p>
+            <div class="footer">
+                <span style="position: absolute; bottom: 0; right: 0; width: 100%; text-align:right; margin-right: 1vw; margin-bottom: 0.5vw" class="text-font">
+                    My Digital Diary
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

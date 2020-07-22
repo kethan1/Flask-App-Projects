@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+{% block navbar %}
+  <nav>
+    <div class="nav-wrapper">
+
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+	  <div style="height: 100%;" class="row brand-logo">
+        <div style="height: 100%" class="col s3">
+          <img src="./static/images/favicon.ico" style="height: 100%;">
+        </div>
+        <div class="col s9">
+          <span style="color: white;" class="flow-text">Web Development 4</span>
+        </div>
+      </div>
+
+      <div style="text-align: center; color: white; font-size: 3.5vw" class="flow-text">
+        Sign Up
+      </div>
+
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/">Register</a></li>
+        <li><a href="/login">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="/">Register</a></li>
+    <li><a href="/login">Login</a></li>
+  </ul>
+  <script>
+	document.addEventListener('DOMContentLoaded', function() {
+		var elems = document.querySelectorAll('.sidenav');
+		var instances = M.Sidenav.init(elems);
+	});
+  </script>
+{% endblock %}
+
+{% block desktop %}
+  <form style="text-align: center; max-width: 70vw; border: 2px solid black; border-radius: 1vw; padding: 0.75vw" class="centeralign" method="POST">
+    <div class="input-field">
+      <i class="material-icons prefix unselectable">account_circle</i>
+      <input class="validate" id="first_name1" type="text" name="first_name" required>
+      <label for="first_name1">First Name</label>
+    </div>
+    <div class="input-field">
+      <i class="material-icons prefix unselectable">account_circle</i>
+      <input class="validate" id="last_name1" type="text" name="last_name" required>
+      <label for="last_name1">Last Name</label>
+    </div>
+    <div class="input-field">
+      <i class="material-icons prefix unselectable">email</i>
+      <input class="validate" id="email1" type="email" name="email" required>
+      <label for="email1">Email</label>
+    </div>
+    <div class="input-field">
+      <a onclick="ShowPassword()"><i class="unselectable postfix mdi mdi-arrow-right material-icons" style="color: black;">remove_red_eye</i></a>
+      <i class="material-icons prefix unselectable">lock</i>
+      <input id="pwd" class="text-font" type="password" name="password">
+      <label for="pwd">Password</label>
+    </div>
+    <div class="input-field">
+      <a onclick="ShowPassword2()"><i class="unselectable postfix mdi mdi-arrow-right material-icons" style="color: black;">remove_red_eye</i></a>
+      <i class="material-icons prefix unselectable">lock</i>
+      <input id="pwd2" class="text-font" type="password" name="confirm_password">
+      <label for="pwd2">Confirm Password</label>
+    </div>
+    <button class="waves-effect waves-light btn" type="submit">Register</button>
+    <br>
+  </form>
+  <br>
+  <br>
+{% endblock %}
+{% block mobile %}
+  <form style="text-align: center; max-width: 85vw; border: 2px solid black; border-radius: 1vw; padding: 1vw" class="centeralign" method="POST">
+    <div class="input-field">
+      <i class="material-icons prefix unselectable">account_circle</i>
+      <input class="validate" id="first_name2" type="text" name="first_name" required>
+      <label for="first_name2">First Name</label>
+    </div>
+    <div class="input-field">
+      <i class="material-icons prefix unselectable">account_circle</i>
+      <input class="validate" id="last_name2" type="text" name="last_name" required>
+      <label for="last_name2">Last Name</label>
+    </div>
+    <div class="input-field">
+      <i class="material-icons prefix unselectable">email</i>
+      <input class="validate" id="email2" type="email" name="email" required>
+      <label for="email2">Email</label>
+    </div>
+    <div class="input-field">
+      <a onclick="ShowPassword3()"><i class="unselectable postfix mdi mdi-arrow-right material-icons" style="color: black;">remove_red_eye</i></a>
+      <i class="material-icons prefix unselectable">lock</i>
+      <input id="pwd3" class="text-font" type="password" name="password">
+      <label for="pwd3">Password</label>
+    </div>
+    <div class="input-field">
+      <a onclick="ShowPassword4()"><i class="unselectable postfix mdi mdi-arrow-right material-icons" style="color: black;">remove_red_eye</i></a>
+      <i class="material-icons prefix unselectable">lock</i>
+      <input id="pwd4" class="text-font" type="password" name="confirm_password">
+      <label for="pwd4">Confirm Password</label>
+    </div>
+    <button class="waves-effect waves-light btn" type="submit">Register</button>
+    <br>
+    <br>
+  </form>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems);
+    });
+  </script>
+{% endblock %}

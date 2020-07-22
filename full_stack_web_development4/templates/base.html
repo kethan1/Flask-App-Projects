@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./static/styles.css">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="./static/images/favicon.ico"/>
+    <script src="{{ url_for('static', filename='show_password.js') }}"></script>
+</head>
+<body>
+
+    <div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <script>
+                        M.toast({html: '<span>{{ message }}</span><button class="btn-flat toast-action" style="color: white;" onclick="M.Toast.dismissAll();">X</button>', classes: 'rounded'})
+                    </script>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    {% block navbar %}
+    {% endblock %}
+
+    <div class="row">
+        <div class="col m12 l12 hide-on-small-only show-on-medium-and-up">
+            {% block desktop %}
+            {% endblock %}
+        </div>
+
+        <div class="col s12 show-on-small hide-on-med-and-up">
+            {% block mobile %}
+            {% endblock %}
+        </div>
+    </div>
+    {% block footer %}
+        <footer class="footer">
+            <div style="text-align: right; padding-right: 1vw; position:relative; bottom: 10px;" class="footer-copyright">
+                © {{ year }} Copyright Kethan
+            </div>
+        </footer>
+    {% endblock %}
+</body>
+</html>

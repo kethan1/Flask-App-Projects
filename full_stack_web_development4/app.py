@@ -26,7 +26,7 @@ def register():
                     'first_name': first_name, 'last_name': last_name, 'email': email, 'password': password
                 })
                 session['logged_in'] = {
-                    'first_name': first_name, 'last_name': last_name, 'email': email, 'password': password
+                    'first_name': first_name, 'last_name': last_name, 'email': email
                 }
                 return session['logged_in']
             else:
@@ -34,6 +34,26 @@ def register():
         else:
             flash('Confirm Password Does Not Match Password')
             return redirect('/')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template('login.html', year=datetime.date.today().year)
+    elif request.method == 'POST':
+        if mongo.db.find_one({'email': request.form['email'], 'password': request.form['password']}) is not None:
+            info = {
+                'first_name': request.form['first_name'],
+                'last_name': request.form['last_name'],
+                'email': request.form['email']
+            }
+            session['logged_in']  = info
+            return session['logged_in']
+        else:
+            if mongo.db.find_one({'email': request.form['email']}) is None:
+                flash('An Account with That Email Address Does Not Exist')
+            else:
+                flash('Wrong Password')
 
 
 if __name__ == '__main__':

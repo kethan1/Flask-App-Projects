@@ -15,6 +15,10 @@
 </head>
 <body>
 
+    {% set pagetitle %}
+        {% block pagetitle %} {% endblock %}
+    {% endset %}
+
     <div>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -28,19 +32,76 @@
     </div>
 
     {% block navbar %}
+      <div class="row">
+        <div class="l12 show-on-large hide-on-med-and-down">
+          <nav>
+            <div class="nav-wrapper">
+                {% block desktopLinks %}
+                  <ul class="right hide-on-med-and-down">
+                    <li><a href="/">Register</a></li>
+                    <li><a href="/login">Login</a></li>
+                  </ul>
+                {% endblock %}
+
+              <div style="height: 100%;" class="row brand-logo">
+                <div style="height: 100%" class="col s3">
+                  <img src="./static/images/favicon.ico" style="height: 100%;">
+                </div>
+                <div class="col s9">
+                  <span style="color: white;" class="flow-text">Web Development 4</span>
+                </div>
+              </div>
+
+              <div style="text-align: center; color: white; font-size: 3.5vw">
+                  {{ pagetitle }}
+              </div>
+
+            </div>
+          </nav>
+        </div>
+        <div class="s12 m12 show-on-medium-and-down hide-on-large-only">
+          <nav>
+            <div class="nav-wrapper">
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+              <div style="height: 100%;" class="row brand-logo">
+                <div style="height: 100%" class="col s3">
+                  <img src="./static/images/favicon.ico" style="height: 100%;">
+                </div>
+                <div class="col s9">
+                  <span style="color: white;" class="flow-text">Web Development 4</span>
+                </div>
+              </div>
+
+              <ul class="right hide-on-med-and-down">
+                <li><a href="/">Register</a></li>
+                <li><a href="/login">Login</a></li>
+              </ul>
+            </div>
+          </nav>
+          <br>
+          <div style="text-align: center; color: black; font-size: 4vw">
+            {{ pagetitle }}
+          </div>
+        </div>
+      </div>
+        {% block mobileLinks %}
+            <ul class="sidenav" id="mobile-demo">
+              <li><a href="/">Register</a></li>
+              <li><a href="/login">Login</a></li>
+            </ul>
+        {% endblock %}
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.sidenav');
+                var instances = M.Sidenav.init(elems);
+            });
+          </script>
     {% endblock %}
 
-    <div class="row">
-        <div class="col m12 l12 hide-on-small-only show-on-medium-and-up">
-            {% block desktop %}
-            {% endblock %}
-        </div>
+    {% block content %}
+    {% endblock %}
 
-        <div class="col s12 show-on-small hide-on-med-and-up">
-            {% block mobile %}
-            {% endblock %}
-        </div>
-    </div>
     {% block footer %}
         <footer class="footer">
             <div style="text-align: right; padding-right: 1vw; position:relative; bottom: 10px;" class="footer-copyright">

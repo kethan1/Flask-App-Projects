@@ -1,0 +1,19 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+
+Jumbled Words
+
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .leftmargin {
+        margin-left:10%
+    }
+</style>
+
+<h1 class="jumbotron"><b style="font-size:3.5vw;" class="leftmargin">You Scored {{ score }} out of {{ total }}</b><br><a href="/" class="btn btn-warning leftmargin">Go Back</a></h1>
+
+{% endblock %}

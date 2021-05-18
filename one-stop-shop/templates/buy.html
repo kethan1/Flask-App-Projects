@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    Import Google Icon Font-->
+<!--    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <!--Import materialize.css-->
+<!--    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>-->
+    <link rel="stylesheet" href="./static/styles.css">
+    <title>Buy</title>
+</head>
+<body>
+      <h1 class="redheader text-font">
+          <span style="font-size:4.25vw">Buy Products</span>
+          <br>
+          <a href="/" class="waves-effect waves-light btn-small a-as-button">Go Back</a>
+          <br><br>
+      </h1>
+    <form method="POST">
+        <div style="display: flex; flex-wrap: wrap;">
+        {% for product in products %}
+                <div class="boxdiv">
+                    <img src="{{ product['imagelink'] }}" style="height: 15vw">
+                    <br>
+                    <p style="font-size: 2vw; margin-left: 7%;" class="text-font">{{ product['title'] }}</p>
+                    <div style="max-width: 50vw;">
+                        <p class="text-font" style="margin-left: 7%; word-wrap: normal; font-size: 1.25vw">{{ product['description'] }}</p>
+                    </div>
+                    <p class="text-font" style="margin-left: 7%; font-size: 1.25vw;">${{ product['price'] }}/{{ product['unit'] }}</p>
+                    <select class="text-font" style="margin-left: 7%; width: 4vw; heigth: 2vw" name="{{ product['_id'] }}">
+                        <option value="0">0</option>
+                        {% for n in range(1, product['QuantityLimit']|int+1) %}
+                            <option value="{{ n }}"> {{ n }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <br>
+                </div>
+
+        {% endfor %}
+            </div>
+
+        <br>
+        <br>
+        <button class="waves-effect waves-light btn-small margin-class a-as-button text-font" style="font-size: 1.25vw;">Add To Cart</button>
+    </form>
+    <br>
+    <br>
+    <a href="/checkout" class="waves-effect waves-light btn-small margin-class a-as-button text-font" style="font-size: 1.25vw;">Cart</a>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>
+</html>

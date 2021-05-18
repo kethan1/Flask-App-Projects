@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Account</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="{{ url_for('static', filename='show_password.js') }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./static/styles.css">
+    <link rel="shortcut icon" type="image/x-icon" href="./static/images/dairy.png"/>
+</head>
+<body>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <script type="text/javascript">
+                    M.toast({html: '<span>{{ message }}</span><button class="btn-flat toast-action" style="color: white;" onclick="M.Toast.dismissAll();">X</button>', classes: 'rounded'})
+                </script>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="row">
+        <div class="col m12 l12 show-on-medium-and-up hide-on-small-only">
+            <div class="header">
+                <span class="text-font">
+                    <span style="font-size:4vw; line-height: 0.5vw;" class="margin">Settings</span>
+                    <br>
+                    <span class="margin" style="font-size: 1.75vw;"><a href="/diary" style="text-decoration:none;">Home</a></span>
+                </span>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <div style="text-align: center;">
+                <form method="POST" style="display: inline;">
+                    <input value="asdfasdfasdfaj i2orj 8ijfiaojiow3pjifjpioajpfiosdjfiop" name="secret" hidden>
+                    <button type="submit" class="waves-effect waves-light btn">Yes, I want to Delete my Account</button>
+                </form>
+                <form method="POST" style="display: inline;">
+                    <input value="" name="secret" hidden>
+                    <button type="submit" class="waves-effect waves-light btn">No, I do not want to Delete my Account</button>
+                </form>
+            </div>
+        </div>
+        <div class="col s12 show-on-small hide-on-med-and-up">
+            <div class="header">
+                <span class="text-font">
+                    <span style="font-size:5.5vw; line-height: 0.5vw;" class="margin">Settings</span>
+                    <br>
+                    <span class="margin" style="font-size: 2.75vw;"><a href="/diary" style="text-decoration:none;">Home</a></span>
+                </span>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <div style="text-align: center;">
+                <form method="POST">
+                    <input value="asdfasdfasdfaj i2orj 8ijfiaojiow3pjifjpioajpfiosdjfiop" name="secret" hidden>
+                    <button style="font-size: 2.3vw" type="submit" class="waves-effect waves-light btn">Yes, I want to Delete my Account</button>
+                </form>
+                <form method="POST">
+                    <input value="" name="secret" hidden>
+                    <button style="font-size: 2.3vw" type="submit" class="waves-effect waves-light btn">No, I do not want to Delete my Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

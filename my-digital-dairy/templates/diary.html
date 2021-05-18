@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./static/styles.css">
+    <script type="text/javascript" src="{{ url_for('static', filename='show_password.js') }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="./static/images/dairy.png"/>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <script type="text/javascript">
+                    M.toast({html: '<span>{{ message }}</span><button class="btn-flat toast-action" style="color: white;" onclick="M.Toast.dismissAll();">X</button>', classes: 'rounded'})
+                </script>
+            {% endfor %}
+
+        {% endif %}
+    {% endwith %}
+    <div class="row">
+        <div class="col m12 l12 hide-on-small-only show-on-medium-and-up">
+            <div style="padding-bottom: 1vw; margin-left: 0; margin-right: 0;" class="header">
+                <span class="text-font">
+                    <span style="font-size:4vw; line-height: 0.5vw;" class="margin">{{ first_name }}</span>
+                    <span style="float: right; margin-right: 5%; font-size: 1.5vw; display: inline;">Login Time: {{ logintime[0]+" "+logintime[1]+":"+logintime[2] }}</span>
+                    <a href="/change_data"><i class="material-icons prefix" style="font-size: 2.4vw; color: white;">settings</i></a>
+                    <br>
+                    <a style="float: right; margin-right: 5%; color: black; background: white; min-width: 15vw" href="/logout" class="waves-effect waves-light btn">Logout</a>
+                    <span class="margin" style="font-size: 1.75vw;">{{ last_name }}'s Diary</span>
+                    <br>
+                </span>
+            </div>
+            <br>
+                <div style="width: 70vw; margin-left: 17vw">
+                    <form method="POST">
+                        <div style="width: 84%" class="input-field inline">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <textarea name="textarea" id="textarea1" class="materialize-textarea"></textarea>
+                            <label for="textarea1">Textarea</label>
+                        </div>
+                        <button type="submit" class="btn waves-effect waves-light">
+                            <i class="material-icons right">save</i>Save
+                        </button>
+                    </form>
+                    {% for entry in entries %}
+                        <p style="font-size: 1.5vw" class="text-font">{{ entry['time'][0]+" "+entry['time'][1]+":"+entry['time'][2] }} </p>
+                        <p style="font-size: 1.25vw" class="text-font">{{ entry['text'] }}</p>
+                    {% else %}
+                        <p style="text-font: 1.5vw;" class="text-font">Write Your First Entry</p>
+                    {% endfor %}
+                </div>
+                <div class="footer">
+                    <span style="position: absolute; bottom: 0; right: 0; text-align:right; margin-right: 1vw; margin-bottom: 0.5vw" class="text-font">
+                        My Digital Diary
+                    </span>
+                </div>
+        </div>
+        <div class="col s12 show-on-small hide-on-med-and-up">
+            <div style="padding-top: 1vw; padding-bottom: 0.5vw" class="header">
+                <span class="text-font">
+                    <span><span style="float: bottom; display: inline-block; max-width: 35vw; font-size:5vw;" class="notext-overflow margin">{{ first_name }}</span> <a href="/change_data"><i class="material-icons prefix" style="vertical-align: 2vw; font-size: 4vw; color: white;">settings</i></a> </span>
+                    <span style="float: right; margin-right: 2%;">
+                        <span>Login Time: {{ logintime[0]+" "+logintime[1]+":"+logintime[2] }}</span>
+                        <br>
+                        <a class="notext-overflow waves-effect waves-light btn-small" style="float: right; margin-right: 2%; color: black; background: white; font-size: 2.2vw; min-width: 30vw; max-width: 40vw" href="/logout">Logout</a>
+                    </span>
+                    <span class="notext-overflow margin" style="float: left; display:inline-block; max-width: 35vw; font-size: 3.5vw;">{{ last_name }}'s Diary</span>
+                    <br>
+                    <br>
+                </span>
+            </div>
+            <br>
+            <div style="width: 80vw; margin-left: auto; margin-right: auto;">
+                <form method="POST">
+                    <div class="input-field">
+                        <i class="material-icons prefix">mode_edit</i>
+                        <textarea name="textarea" id="textarea2" class="materialize-textarea"></textarea>
+                        <label for="textarea2">Textarea</label>
+                    </div>
+                    <button type="submit" class="btn-small waves-effect waves-light">
+                        <i class="material-icons right">save</i>Save
+                    </button>
+                </form>
+                {% for entry in entries %}
+                    <p style="font-size: 3.15vw" class="text-font">{{ entry['time'][0]+" "+entry['time'][1]+":"+entry['time'][2] }}</p>
+                    <p style="font-size: 2.9vw" class="text-font">{{ entry['text'] }}</p>
+                {% else %}
+                    <p style="font-size: 3vw" class="text-font">Write Your First Entry</p>
+                {% endfor %}
+            </div>
+            <div class="footer">
+                <span style="position: absolute; bottom: 0; right: 0; width: 100%; text-align:right; margin-right: 1vw; margin-bottom: 0.5vw" class="text-font">
+                    My Digital Diary
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

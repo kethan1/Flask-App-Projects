@@ -1,0 +1,22 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+
+Jumbled Words
+
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .leftmargin {
+        margin-left:10%
+    }
+</style>
+
+<h1 class="jumbotron"><b style="font-size:3.5vw;" class="leftmargin">Jumbled Words</b><br><span style="font-size:1.25vw" class="leftmargin">Make your choice</span></h1>
+
+<a href="/jumble" class="btn btn-primary leftmargin">Jumble a Word</a>
+<a href="/figureout" class="btn btn-success">Figure out the Words</a>
+
+{% endblock %}

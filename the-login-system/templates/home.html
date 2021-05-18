@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./static/styles.css">
+</head>
+<body>
+    <div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <script type="text/javascript">
+                        M.toast({html: '<span>{{ message }}</span><button class="btn-flat toast-action" style="color: white;" onclick="M.Toast.dismissAll();">X</button>', classes: 'rounded'})
+                    </script>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    <div class="header">
+        <span class="text-font">
+            <span style="font-size:4vw; line-height: 0.5vw;" class="margin">Welcome {{ first_name }}</span>
+            <a href="/change_data"><i class="material-icons prefix" style="font-size: 2.4vw; color: white;">settings</i></a>
+            <br>
+            <span class="margin" style="font-size: 1.75vw;"><a href="/logout">Logout</a></span>
+            <br>
+        </span>
+    </div>
+    <div class="text-font" style="text-align: center; margin-top: 5vw; border: 2px solid gray; width: 25%; border-radius: 1.25vw; margin-left: auto; margin-right: auto; padding: 30px">
+        <p>First Name: {{ first_name }}</p>
+        <p>Last Name: {{ last_name }}</p>
+        <p>Email: {{ email }}</p>
+    </div>
+    <br>
+    <div class="footer">
+        <span style="position: absolute; bottom: 0; right: 0; width: 100%; text-align:right; margin-right: 1vw; margin-bottom: 0.5vw" class="text-font">
+            The Login System
+        </span>
+    </div>
+</body>
+</html>

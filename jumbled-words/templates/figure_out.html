@@ -1,0 +1,30 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+
+Jumbled Words
+
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .leftmargin {
+        margin-left:10%
+    }
+</style>
+
+<h1 class="jumbotron"><b style="font-size:3.5vw;" class="leftmargin">Figure out the Words</b><br><span style="font-size:1.25vw" class="leftmargin">One you have filled out all the boxes click finish to see your score</span></h1>
+
+<form style="margin-right:10%" class=" leftmargin" method="POST">
+    <b>{{ jumbled }}</b>
+    <br>
+    <input class="form-control" name="{{ docs[index] }}" type="text">
+    <br>
+    <br>
+    <button class="btn btn-info" type="submit">{{ isfinished }}</button>
+    <br>
+    <br>
+</form>
+
+{% endblock %}

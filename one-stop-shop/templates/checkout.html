@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="./static/styles.css">
+    <title>Checkout</title>
+</head>
+<body>
+    <h1 class="redheader text-font">
+        <span style="font-size:4.25vw">Cart</span>
+        <br>
+        <a href="/clear_cart" class="waves-effect waves-light btn-small a-as-button">Empty Cart?</a>
+        <br>
+        <br>
+    </h1>
+    <div>
+        <table class="center text-font" style="border:1px solid black;border-collapse:collapse; font-size: 1vw;">
+            <thead>
+                <tr style="padding:20px; background: powderblue;">
+                    <td style="border:1px solid black; padding-left: 0.5%;">  Product Title</td>
+                    <td style="border:1px solid black; padding-left: 0.5%;">  Product Description</td>
+                    <td style="border:1px solid black; padding-left: 0.5%;">  Product Price</td>
+                    <td style="border:1px solid black; padding-left: 0.5%;">  Quantity Bought</td>
+                    <td style="border:1px solid black; padding-left: 0.5%;">  Total Price</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    {% if item[1] > 0 %}
+                        {% if loop.index % 2 == 0 %}
+                            <tr style="background: #F5F5F5">
+                                <td style="border:1px solid black; padding-left: 0.5%;">{{ item[0]['title'] }}</td>
+                                <td style="border:1px solid black; padding-left: 0.5%;">{{ item[0]['description'] }}</td>
+                                <td style="border:1px solid black; padding-left: 0.5%;">${{ item[0]['price'] }}</td>
+                                <td style="border:1px solid black; padding-left: 0.5%;">{{ item[1] }} {{ item[0]['unit'] }}(s)</td>
+                                <td style="border:1px solid black; padding-left: 0.5%;">${{ (item[1]|int * item[0]['price']|float)|round(2) }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td style="border:1px solid black; padding-left: 0.5%;">{{ item[0]['title'] }}</td>
+                                <td style="border:1px solid black; padding-left: 0.5%;">{{ item[0]['description'] }}</td>
+                                <td style="border:1px solid black; padding-left: 0.5%;">${{ item[0]['price'] }}</td>
+                                <td style="border:1px solid black; padding-left: 0.5%;">{{ item[1] }} {{ item[0]['unit'] }}(s)</td>
+                                <td style="border:1px solid black; padding-left: 0.5%;">${{ (item[1]|int * item[0]['price']|float)|round(2) }}</td>
+                        {% endif %}
+                    {% endif %}
+                {% else %}
+                    <tr>
+                        <td colspan="5" style="padding-left: 0.5%">Add Some Items to Your Cart!!</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="4" style="border:1px solid black; text-align: right; padding-right: 1%">Total: </td>
+                    <td style="padding-left: 0.5%">${{ total }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <br>
+    <a href="/buy" class="waves-effect waves-light btn-small a-as-button text-font" style="font-size: 1.25vw; text-align: center;">Add More Items</a>
+    <br>
+    <br>
+    <a href="/" class="waves-effect waves-light btn-small a-as-button text-font" style="font-size: 1.25vw;">Home</a>
+</body>
+</html>
